@@ -7,4 +7,4 @@ You can set this script to be called when any external device is plugged in to d
 TODO:
 - [ ] Get `$diskList` in a loop in case multiple disks are in use
 - [ ] Perform a check for encrypted disks and only write to `/etc/fstab` if unencrypted
-- [ ] Get the current partition format in the loop and write it to `/etc/fstab` instead of the hard coded "HFS"
+- [x] Get the current partition format in the loop and write it to `/etc/fstab` instead of the hard coded "HFS"
