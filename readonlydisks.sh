@@ -12,8 +12,9 @@ array=(`echo ${partitionList}`)
 # Loop through array to get the UUID of each partition, then add it to fstab as read only
 for element in "${array[@]}"
   do
-      UUID=$(diskutil info $element | grep "Volume UUID:" | awk '{print $NF}')
-      echo "UUID="$UUID"\tnone\thfs\tro" | sudo tee -a /etc/fstab
+      diskUUID=$(diskutil info $element | grep "Volume UUID:" | awk '{print $NF}')
+      diskType=$(diskutil info disk2s3 | grep "Type (Bundle):" | awk '{print $NF}')
+      echo "UUID="$diskUUID"\tnone\t"$diskType"\tro" | sudo tee -a /etc/fstab
   done
 
 # Unmount and remount the disk for fstab to be read
